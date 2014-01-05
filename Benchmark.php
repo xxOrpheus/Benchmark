@@ -7,8 +7,17 @@ class Benchmark {
 
 	}
 
-	public function newBenchmark($benchmark) {
+	public function newBenchmark($benchmark, closure $func = null, $iterations = 0) {
 		$this->benchmarks[$benchmark] = array('start' => microtime(true), 'iterations' => array(), 'end' => 0);
+		if($func != null) {
+			if($iterations > 0) {
+				for($i = 0; $i < $iterations; $i++) {
+					$this->startIteration($benchmark);
+					$func();
+					$this->endIteration($benchmark);
+				}
+			}
+		}
 	}
 
 	public function startIteration($benchmark) {
