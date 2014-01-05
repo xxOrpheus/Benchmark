@@ -35,7 +35,7 @@ class Benchmark {
 			$count = count($times);
 			$high = $times[0];
 			$low = $times[count($times) - 1];
-			return array('average' => $total / $count, 'high' => $high, 'low' => $low, 'total' => $total, 'iterations' => $count);
+			return array('name' => $benchmark, 'average' => $total / $count, 'high' => $high, 'low' => $low, 'total' => $total, 'iterations' => $count);
 		}
 	}
 }
