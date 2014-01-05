@@ -3,7 +3,19 @@ Benchmark
 
 # A class for creating simple benchmarks.
 
-### Usage
+### Easy usage (>=PHP 5.3.0)
+```php
+<?php
+require 'Benchmark.php';
+$benchmark = new Benchmark();
+
+$benchmark->newBenchmark('crypt', function() { crypt('hello world'); }, 1000);
+$benchmark->newBenchmark('md5', function() { md5('hello world'); }, 1000);
+var_dump($benchmark->results('crypt'));
+var_dump($benchmark->results('md5'));
+```
+
+### Usage (<PHP 5.3.0)
 ```php
 <?php
 require 'Benchmark.php';
